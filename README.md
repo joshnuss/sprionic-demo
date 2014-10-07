@@ -2,8 +2,11 @@
 
 This is a toy project for playing with Spree/ionic integration
 
-Spree: http://spreecommerce.com
-Ionic: http://ionicframework.com
+Links:
+
+- Spree: http://spreecommerce.com
+- Ionic: http://ionicframework.com
+- Angular.js: http://angularjs.org
 
 ## Installation
 
