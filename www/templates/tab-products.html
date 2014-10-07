@@ -1,0 +1,21 @@
+<style>
+  a.product-listing {
+    display: block;
+    width: 33%;
+    float: left;
+    text-align: center;
+    border: solid 1px #ccc;
+  }
+
+  a.product-listing img {
+    width: 100%;
+  }
+</style>
+
+<ion-view title="Shop">
+  <ion-content>
+    <a class='product-listing' ng-repeat="product in products" href="#/tab/product/{{product.slug}}">
+      <img ng-src="{{product.master.images[0].product_url}}" title="{{product.name}}"/>
+    </a>
+  </ion-content>
+</ion-view>
