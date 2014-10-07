@@ -2,6 +2,9 @@
 
 This is a toy project for playing with Spree/ionic integration
 
+Spree: http://spreecommerce.com
+Ionic: http://ionicframework.com
+
 ## Installation
 
 Install cordova and ionic
