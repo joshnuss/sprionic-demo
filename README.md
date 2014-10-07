@@ -1,4 +1,4 @@
-# Spree + Ionic Demo
+# Spree + Ionic Android/iOS Demo
 
 This is a toy project for playing with Spree/ionic integration
 
