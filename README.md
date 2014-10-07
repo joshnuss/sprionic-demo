@@ -7,6 +7,7 @@ Links:
 - Spree: http://spreecommerce.com
 - Ionic: http://ionicframework.com
 - Angular.js: http://angularjs.org
+- ngCordova: http://ngcordova.com
 
 ## Installation
 
