@@ -1,0 +1,17 @@
+ion-nav-bar.bar-positive(align-title='center')
+
+  ion-nav-buttons(side="left")
+    button.button.button-clear(ng-click='toggleLeft()')
+      i.icon.ion-navicon
+
+    ion-nav-back-button.button-clear
+      i.ion-arrow-left-c
+      | Back
+
+  .title
+
+  ion-nav-buttons(side="right")
+    button.button.button-clear(ng-click='toggleRight()')
+      i.icon.ion-ios7-cart-outline
+
+ion-nav-view
