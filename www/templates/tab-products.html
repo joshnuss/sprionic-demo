@@ -17,5 +17,11 @@
     <a class='product-listing' ng-repeat="product in products" href="#/tab/product/{{product.slug}}">
       <img ng-src="{{product.master.images[0].product_url}}" title="{{product.name}}"/>
     </a>
+
+    <ion-infinite-scroll
+      ng-if='moreAvailable'
+      on-infinite="loadMore()"
+      distance="1%">
+    </ion-infinite-scroll>
   </ion-content>
 </ion-view>

@@ -5,10 +5,19 @@ angular.module('starter.controllers', [])
 
 .controller('ProductsCtrl', function($scope, Catalog) {
   $scope.products = [];
+  $scope.page = 0;
+  $scope.moreAvailable = true;
 
-  Catalog.all().then(function(page) {
-    $scope.products = page.products;
-  });
+  $scope.loadMore = function() {
+    Catalog.all($scope.page+1).then(function(page) {
+      page.products.forEach(function(product) {
+        $scope.products.push(product)
+      });
+      $scope.page = Number(page.current_page);
+      $scope.moreAvailable = $scope.products.length < Number(page.total_count);
+      $scope.$broadcast('scroll.infiniteScrollComplete');
+    });
+  };
 })
 
 .controller('ProductDetailCtrl', function($scope, $stateParams, $timeout, Cart, Catalog) {

@@ -69,8 +69,10 @@ angular.module('starter.services', [])
   };
 
   return {
-    all: function() {
-      return $http.get(Env.domain + '/api/products')
+    all: function(page) {
+      page = page || 1;
+
+      return $http.get(Env.domain + '/api/products', {params: {page: page}})
                   .then(function(response) {
                     response.data.products.forEach(updateProductImageUrls);
                     return response.data;
