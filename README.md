@@ -9,6 +9,8 @@ Links:
 - Angular.js: http://angularjs.org
 - ngCordova: http://ngcordova.com
 
+Frontend technologies used: gulp, sass, coffeescript, jade
+
 ## Installation
 
 ### Setup a Spree demo site
