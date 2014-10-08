@@ -6,17 +6,21 @@ angular.module("sprionic.services", [])
     domain: "http://192.168.0.101:3000"
     token: "033ab5d925381b932d566fe86b010ce5802f7b1e601f460c"
   )
-.factory "Cart", ->
+.factory "Cart", ($cordovaToast) ->
   service =
     lines: []
-    add: (product) ->
+
+    add: (product, quantity) ->
+      quantity ||= 1
       line = service.findProduct(product)
       if line
-        line.quantity += 1
+        line.quantity += quantity
       else
         service.lines.push
           product: product
-          quantity: 1
+          quantity: quantity
+
+      $cordovaToast.showShortTop("#{quantity} #{product.name} added to cart.") if window.plugins
 
     findProduct: (product) ->
       for index of service.lines
