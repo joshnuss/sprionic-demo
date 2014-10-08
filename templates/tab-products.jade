@@ -1,0 +1,8 @@
+ion-view(title='Shop')
+  ion-content
+    .row(ng-repeat='row in partitioned')
+      a.product-listing(ng-repeat='product in row', href='#/tab/product/{{product.slug}}')
+        .col
+          img(ng-src='{{product.master.images[0].product_url}}', title='{{product.name}}')
+
+    ion-infinite-scroll(ng-if='moreAvailable', on-infinite='loadMore()', distance='1%')

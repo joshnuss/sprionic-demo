@@ -1,0 +1,33 @@
+ion-view(title='{{product.name}}')
+  ion-content(has-header='false', padding='true')
+    .card
+      .item.item-divider
+        h1 {{product.name}}
+        p {{product.master.sku}}
+
+      .item.item-text-wrap(ng-click='expandDescription = !expandDescription')
+        p(ng-if='!expandDescription')
+          | {{product.description | limitTo: 40}}
+          a(href='') more...
+        p(ng-if='expandDescription') {{product.description}}
+
+      .item
+        button#add-to-cart.button.button-block.button-positive(ng-click='addToCart()')
+          span(ng-hide='adding')
+            b Add to Cart
+            | {{product.price | currency}}
+          span(ng-show='adding')
+            i.icon.ion-loading-c
+            | Adding...
+
+      .item
+        ion-slide-box(auto-play='true', does-continue='true')
+          ion-slide(ng-repeat='image in product.master.images')
+            .main-image
+              img(ng-src='{{image.large_url}}')
+
+    h2#specifications Specifications
+    ion-list
+      ion-item(ng-repeat='property in product.product_properties')
+        h4 {{property.property_name}}
+        p {{property.value}}

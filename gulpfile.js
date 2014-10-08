@@ -8,13 +8,25 @@ var rename = require('gulp-rename');
 var coffee = require('gulp-coffee');
 var sourcemaps = require('gulp-sourcemaps');
 var sh = require('shelljs');
+var jade = require('gulp-jade');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
-  coffee: ['./src/**/*.coffee']
+  coffee: ['./src/**/*.coffee'],
+  templates: ['./templates/**/*.jade']
 };
 
-gulp.task('default', ['sass', 'coffee']);
+gulp.task('default', ['sass', 'coffee', 'templates']);
+
+gulp.task('templates', function() {
+  var YOUR_LOCALS = {};
+
+  gulp.src(paths.templates)
+    .pipe(jade({
+      locals: YOUR_LOCALS
+    }))
+    .pipe(gulp.dest('./www/templates'));
+});
 
 gulp.task('coffee', function(done) {
   gulp.src(paths.coffee)
@@ -41,6 +53,7 @@ gulp.task('sass', function(done) {
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.coffee, ['coffee']);
+  gulp.watch(paths.templates, ['templates']);
 });
 
 gulp.task('install', ['git-check'], function() {
