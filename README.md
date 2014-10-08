@@ -57,7 +57,8 @@ rails server -b 192.168.X.Y
 Install cordova and ionic
 
 ```
-npm install -g cordova ionic
+npm install -g cordova ionic gulp
+cd sprionic-demo && npm install
 ```
 
 ### Install Android/iOS dev tools
@@ -72,9 +73,10 @@ https://developer.apple.com/xcode/downloads/
 
 ## Development
 
-Runs app in local browser with live-reload:
+Watch .coffee and .scss, and run app in local browser with live-reload:
 
 ```
+gulp watch
 ionic serve
 ```
 
