@@ -14,9 +14,13 @@
 
 <ion-view title="Shop">
   <ion-content>
-    <a class='product-listing' ng-repeat="product in products" href="#/tab/product/{{product.slug}}">
-      <img ng-src="{{product.master.images[0].product_url}}" title="{{product.name}}"/>
-    </a>
+    <div class='row' ng-repeat='row in partitioned'>
+      <a class='product-listing' ng-repeat="product in row" href="#/tab/product/{{product.slug}}">
+        <div class='col'>
+          <img ng-src="{{product.master.images[0].product_url}}" title="{{product.name}}"/>
+        </div>
+      </a>
+    </div>
 
     <ion-infinite-scroll
       ng-if='moreAvailable'

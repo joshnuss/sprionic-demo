@@ -72,7 +72,7 @@ angular.module('starter.services', [])
     all: function(page) {
       page = page || 1;
 
-      return $http.get(Env.domain + '/api/products', {params: {page: page}})
+      return $http.get(Env.domain + '/api/products', {params: {page: page, per_page: 9}})
                   .then(function(response) {
                     response.data.products.forEach(updateProductImageUrls);
                     return response.data;

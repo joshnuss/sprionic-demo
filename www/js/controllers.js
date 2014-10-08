@@ -8,11 +8,20 @@ angular.module('starter.controllers', [])
   $scope.page = 0;
   $scope.moreAvailable = true;
 
+  function partition(arr, size) {
+    var newArr = [];
+    for (var i=0; i<arr.length; i+=size) {
+      newArr.push(arr.slice(i, i+size));
+    }
+    return newArr;
+  }
+
   $scope.loadMore = function() {
     Catalog.all($scope.page+1).then(function(page) {
       page.products.forEach(function(product) {
-        $scope.products.push(product)
+        $scope.products.push(product);
       });
+      $scope.partitioned = partition($scope.products, 3);
       $scope.page = Number(page.current_page);
       $scope.moreAvailable = $scope.products.length < Number(page.total_count);
       $scope.$broadcast('scroll.infiniteScrollComplete');
