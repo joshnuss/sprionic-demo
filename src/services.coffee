@@ -25,7 +25,7 @@ angular.module("sprionic.services", [])
     findProduct: (product) ->
       for index of service.lines
         line = service.lines[index]
-        return line  if line.product is product
+        return line if line.product.id == product.id
 
     total: ->
       amount = 0
