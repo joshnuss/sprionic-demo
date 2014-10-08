@@ -40,7 +40,9 @@ gulp.task('coffee', function(done) {
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
+    .pipe(sourcemaps.init())
     .pipe(sass())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./www/css/'))
     .pipe(minifyCss({
       keepSpecialComments: 0
