@@ -1,37 +1,24 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $cordovaGeolocation) {
-   $cordovaGeolocation
-    .getCurrentPosition()
-    .then(function (position) {
-      $scope.position = position;
-    }, function(err) {
-      // error
-    });
-
-  // begin watching
-  var watch = $cordovaGeolocation.watchPosition({ frequency: 1000 });
-  watch.promise.then(function() { /* Not  used */ }, 
-    function(err) {
-      // An error occurred.
-    }, 
-    function(position) {
-      $scope.position = position;
-      // Active updates of the position here
-      // position.coords.[ latitude / longitude]
-  });
-
-  // clear watch
-  $cordovaGeolocation.clearWatch(watch.watchId)
+.controller('DashCtrl', function($scope) {
 })
 
 .controller('ProductsCtrl', function($scope, Catalog) {
-  $scope.products = Catalog.all();
+  $scope.products = [];
+
+  Catalog.all().then(function(page) {
+    $scope.products = page.products;
+  });
 })
 
 .controller('ProductDetailCtrl', function($scope, $stateParams, $timeout, Cart, Catalog) {
-  $scope.product = Catalog.get($stateParams.productId);
+  $scope.product = {};
   $scope.adding = false;
+
+  Catalog.get($stateParams.productId)
+         .then(function(product) {
+           $scope.product = product;
+         });
 
   $scope.addToCart = function() {
     $scope.adding = true;

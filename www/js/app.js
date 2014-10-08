@@ -21,6 +21,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   });
 })
 
+.run(function($http, Env) {
+  $http.defaults.headers.common['X-Spree-Token'] = Env.token;
+})
+
 .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
