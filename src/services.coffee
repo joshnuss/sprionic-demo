@@ -30,6 +30,15 @@ angular.module("sprionic.services", [])
         amount += line.product.price * line.quantity
       amount
 
+    totalQuantity: ->
+      quantity = 0
+
+      for index of service.lines
+        line = service.lines[index]
+        quantity += line.quantity
+
+      quantity
+
     empty: ->
       @lines = []
 
