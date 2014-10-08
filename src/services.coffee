@@ -30,6 +30,9 @@ angular.module("sprionic.services", [])
         amount += line.product.price * line.quantity
       amount
 
+    empty: ->
+      @lines = []
+
   service
 
 .factory "Catalog", ($http, Env) ->

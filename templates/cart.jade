@@ -1,36 +1,44 @@
-header.bar.bar-header
-  h1.title My Cart
+div(ng-controller='CartCtrl')
+  header.bar.bar-header
+    h1.title My Cart
 
-ion-content.has-header(ng-controller='CartCtrl')
-  .padding(ng-if='cart.lines.length == 0')
-    p
-      | Your cart is
-      b empty
-      | .
-    a.button.button-block.button-calm(menu-toggle='right', href='#/tab/products') Start Shopping
+  ion-content.has-header
+    .padding(ng-if='cart.lines.length == 0')
+      p
+        | Your cart is&nbsp;
+        b empty
+        | .
+      a.button.button-block.button-calm(menu-toggle='right', href='#/tab/products') Start Shopping
 
-  ion-list(ng-if='cart.lines.length > 0')
-    ion-item(ng-repeat='line in cart.lines')
-      input(ng-model='line.quantity', type='number', style='float: left; width: 30px; margin-top: 8px;')
+    ion-list(ng-if='cart.lines.length > 0')
+      ion-item(ng-repeat='line in cart.lines')
+        input(ng-model='line.quantity', type='number', style='float: left; width: 30px; margin-top: 8px;')
 
-      a(menu-toggle='right', href='#/tab/product/{{line.product.slug}}')
-        img(style='float: left;', ng-src='{{line.product.master.images[0].mini_url}}')
-        h2 {{line.product.name}}
-        p {{line.product.price | currency}}
+        a(menu-toggle='right', href='#/tab/product/{{line.product.slug}}')
+          img(style='float: left;', ng-src='{{line.product.master.images[0].mini_url}}')
+          h2 {{line.product.name}}
+          p {{line.product.price | currency}}
 
-    ion-item
-      .row
-        .col
-          h2 Tax
-          p {{0 | currency}}
-        .col
-          h2 Shipping
-          p {{0 | currency}}
-        .col
-          h2 Total
-          p {{cart.total() | currency}}
+      ion-item
+        .row
+          .col
+            h2 Tax
+            p {{0 | currency}}
+          .col
+            h2 Shipping
+            p {{0 | currency}}
+          .col
+            h2 Total
+            p {{cart.total() | currency}}
 
-  .padding
-    button.button.button-block.button-positive(ng-if='cart.lines.length > 0')
-      | Checkout
-      i.icon.ion-chevron-right
+    .padding
+      button.button.button-block.button-positive(ng-if='cart.lines.length > 0')
+        | Checkout
+        i.icon.ion-chevron-right
+
+
+  ion-footer-bar(ng-if='cart.lines.length > 0')
+    .buttons
+      a(ng-click='cart.empty()')
+        i.icon.ion-trash-a
+        | &nbsp;start over
