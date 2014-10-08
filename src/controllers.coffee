@@ -39,6 +39,9 @@ angular.module("sprionic.controllers", [])
         $scope.adding = false
       ), 2000)
 
+  .controller "CartCtrl", ($scope, Cart) ->
+    $scope.cart = Cart
+
   .controller "AccountCtrl", ($scope) ->
     return
 

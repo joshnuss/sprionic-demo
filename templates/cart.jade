@@ -1,14 +1,15 @@
 header.bar.bar-header
   h1.title My Cart
 
-ion-content.has-header
+ion-content.has-header(ng-controller='CartCtrl')
   .padding(ng-if='cart.lines.length == 0')
     p
       | Your cart is
       b empty
       | .
     a.button.button-block.button-calm(menu-toggle='right', href='#/tab/products') Start Shopping
-  ion-list(ng-if='ng-if', cart.lines.length='cart.lines.length')
+
+  ion-list(ng-if='cart.lines.length > 0')
     ion-item(ng-repeat='line in cart.lines')
       input(ng-model='line.quantity', type='number', style='float: left; width: 30px; margin-top: 8px;')
 
@@ -30,6 +31,6 @@ ion-content.has-header
           p {{cart.total() | currency}}
 
   .padding
-    button.button.button-block.button-positive(ng-if='ng-if', cart.lines.length='cart.lines.length')
+    button.button.button-block.button-positive(ng-if='cart.lines.length > 0')
       | Checkout
       i.icon.ion-chevron-right
