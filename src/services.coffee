@@ -81,3 +81,7 @@ angular.module("sprionic.services", [])
     $http.get(Env.domain + "/api/products/" + slug).then (response) ->
       updateProductImageUrls response.data
       response.data
+
+  taxonomies: ->
+    $http.get(Env.domain + "/api/taxonomies").then (response) ->
+      response.data.taxonomies

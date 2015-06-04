@@ -42,6 +42,9 @@ angular.module("sprionic", [
       "tab-dash":
         templateUrl: "templates/tab-dash.html"
         controller: "DashCtrl"
+        resolve:
+          taxonomies: (Catalog) ->
+            Catalog.taxonomies()
   ).state("tab.products",
     url: "/products"
     views:

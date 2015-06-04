@@ -6,27 +6,8 @@ ion-view(title="Sprionic")
       ion-item
         a Search
 
-      ion-item.item-divider Categories
+      .taxonomy(ng-repeat='taxonomy in taxonomies')
+        ion-item.item-divider(ng-bind='taxonomy.name')
 
-      ion-item
-        a T-Shirts
-
-      ion-item
-        a Bags
-
-      ion-item
-        a Mugs
-
-      ion-item.item-divider Brands
-
-      ion-item
-        a Ruby
-
-      ion-item
-        a Rails
-
-      ion-item
-        a Spree
-
-      ion-item
-        a Apache
+        ion-item(ng-repeat='taxon in taxonomy.root.taxons')
+          a(ng-bind='taxon.name')

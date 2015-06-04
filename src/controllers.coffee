@@ -1,7 +1,7 @@
 angular.module("sprionic.controllers", [])
 
-  .controller "DashCtrl", ($scope) ->
-    return
+  .controller "DashCtrl", ($scope, taxonomies) ->
+    $scope.taxonomies = taxonomies
 
   .controller "ProductsCtrl", ($scope, Catalog) ->
     partition = (arr, size) ->
