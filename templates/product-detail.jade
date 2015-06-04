@@ -1,5 +1,5 @@
 ion-view(title='{{product.name}}')
-  ion-content(has-header='false', padding='true')
+  ion-content(has-header='false', padding='true', ng-show='!loading')
     .card
       .item.item-divider
         h1 {{product.name}}
