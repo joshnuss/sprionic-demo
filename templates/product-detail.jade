@@ -23,8 +23,8 @@ ion-view(title='{{product.name}}')
             | Adding...
 
       .item
-        ion-slide-box(auto-play='true', does-continue='true')
-          ion-slide(ng-repeat='image in product.master.images')
+        ion-slide-box(auto-play='true', does-continue='true', show-pager='image.length>1')
+          ion-slide(ng-repeat='image in images')
             .main-image
               img(ng-src='{{image.large_url}}')
 
