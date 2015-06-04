@@ -1,4 +1,4 @@
-div(ng-controller='CartCtrl')
+#cart(ng-controller='CartCtrl')
   header.bar.bar-header
     h1.title My Cart
 
@@ -14,10 +14,10 @@ div(ng-controller='CartCtrl')
       ion-item(ng-repeat='line in cart.lines')
         input(ng-model='line.quantity', type='number', style='float: left; width: 30px; margin-top: 8px;')
 
-        a(menu-toggle='right', href='#/tab/product/{{line.product.slug}}')
+        a.details(menu-toggle='right', href='#/tab/product/{{line.product.slug}}')
           img(style='float: left;', ng-src='{{line.product.master.images[0].mini_url}}')
           h2 {{line.product.name}}
-          p {{line.product.price | currency}}
+          span.price {{line.product.price | currency}}
 
       ion-item
         .row
@@ -34,6 +34,7 @@ div(ng-controller='CartCtrl')
     .padding
       button.button.button-block.button-positive(ng-if='cart.lines.length > 0')
         | Checkout
+        | &nbsp;
         i.icon.ion-chevron-right
 
 
@@ -41,4 +42,5 @@ div(ng-controller='CartCtrl')
     .buttons
       a(ng-click='cart.empty()')
         i.icon.ion-trash-a
-        | &nbsp;start over
+        | &nbsp;
+        | clear items
