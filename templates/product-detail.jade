@@ -15,9 +15,11 @@ ion-view(title='{{product.name}}')
         button#add-to-cart.button.button-block.button-positive(ng-click='addToCart()')
           span(ng-hide='adding')
             b Add to Cart
+            | &nbsp;
             | {{product.price | currency}}
           span(ng-show='adding')
             i.icon.ion-loading-c
+            | &nbsp;
             | Adding...
 
       .item
