@@ -3,7 +3,7 @@ A simple example service that returns some data.
 ###
 angular.module("sprionic.services", [])
   .constant("Env",
-    domain: "http://192.168.0.101:3000"
+    domain: "http://sprangular-demo.herokuapp.com"
     token: "033ab5d925381b932d566fe86b010ce5802f7b1e601f460c"
   )
 .factory "Cart", ($cordovaToast) ->
