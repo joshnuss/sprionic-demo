@@ -26,14 +26,23 @@ angular.module("sprionic.controllers", [])
         $scope.moreAvailable = $scope.products.length < Number(page.total_count)
         $scope.$broadcast "scroll.infiniteScrollComplete"
 
-  .controller "ProductDetailCtrl", ($scope, $stateParams, $timeout, Cart, Catalog) ->
+  .controller "ProductDetailCtrl", ($scope, $stateParams, $timeout, $ionicLoading, Cart, Catalog) ->
     $scope.product = {}
+    $scope.images = []
     $scope.adding = false
+
+    $scope.loading = true
+    $ionicLoading.show({template: "Loading..."})
+
     Catalog.get($stateParams.productId).then (product) ->
       $scope.product = product
+      $scope.images = product.master.images
+      $ionicLoading.hide()
+      $scope.loading = false
 
     $scope.addToCart = ->
       $scope.adding = true
+
       $timeout((->
         Cart.add $scope.product
         $scope.adding = false
